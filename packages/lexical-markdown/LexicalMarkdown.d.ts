@@ -11,6 +11,7 @@ import type {
   ElementNode,
   LexicalNode,
   TextFormatType,
+  TextNode,
 } from 'lexical';
 
 export type Transformer =
@@ -33,13 +34,13 @@ export type ElementTransformer = {
   type: 'element';
 };
 
-export type TextFormatTransformer = $ReadOnly<{
-  format: $ReadOnlyArray<TextFormatType>;
+export type TextFormatTransformer = Readonly<{
+  format: ReadonlyArray<TextFormatType>;
   tag: string;
   type: 'text-format';
 }>;
 
-export type TextMatchTransformer = $ReadOnly<{
+export type TextMatchTransformer = Readonly<{
   export: (
     node: LexicalNode,
     exportChildren: (node: ElementNode) => string,
@@ -47,7 +48,7 @@ export type TextMatchTransformer = $ReadOnly<{
   ) => string | null;
   importRegExp: RegExp;
   regExp: RegExp;
-  replace: (node: TextNode, match: RegExp$matchResult) => void;
+  replace: (node: TextNode, match: RegExpMatchArray) => void;
   trigger: string;
   type: 'text-match';
 }>;

@@ -6,8 +6,4 @@
  *
  */
 
-import {Transformer} from '@lexical/markdown/LexicalMarkdown';
-
-export default function LexicalMarkdownShortcutPlugin(props: {
-  transformers: Array<Transformer>;
-}): JSX.Element | null;
+export default function LexicalCheckListPlugin(): null;
